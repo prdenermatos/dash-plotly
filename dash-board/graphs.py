@@ -18,6 +18,7 @@ app.layout = html.Div(
        html.H1(children="Monitor de perspectiva no tempo"),  
         html.P("Esta é uma descrição resumida do gráfico"),
         dcc.Graph(
+                id = "graph-lines" ,
                 figure={
                     "data": [
                         {
@@ -37,22 +38,19 @@ app.layout = html.Div(
         html.H1(children="Análise de Composição"),  
             html.P("Esta é uma descrição resumida do gráfico"),
             dcc.Graph(
+                    id = "graph-boxplot" ,
                     figure={
                         "data": [
                             {
                                 "y": data_moc["x"], 'type': 'box'  # o Type define o grafico  e cada um recebe uma forma de parâmetro
-                            
                             },
                             {
                                 "y": data_moc["y"], 'type': 'box'  # o Type define o grafico  e cada um recebe uma forma de parâmetro
-                            
                             },
                         ],
                         "layout": {"title": "Boxplot"},
                     },
                 ),
-    
-    
             ]
         ),
 
@@ -61,6 +59,7 @@ app.layout = html.Div(
             html.H1(children="Análise de Composição"),  
                 html.P("Pode ser usado para avaliar grandezas relacionadas"),
                 dcc.Graph(
+                        id = "graph-2-lines" ,
                         figure={
                     "data": [
                         {
@@ -81,8 +80,31 @@ app.layout = html.Div(
         
                 ]
         ),
+        html.Div(
+        children=[
+            html.H1(children="Gráfico de Barras e Tendências"),  
+                html.P("Pode ser usado para avaliar grandezas relacionadas"),
+                dcc.Graph(
+                        id = "graph-bar-lines" ,
+                        figure={
+                    "data": [
+                        {
+                            "x": data_moc["x"],  
+                            "y": data_moc["y"],
+                            "type": "bar", 
+                        },
+                         {
+                            "x": data_moc["x"],  
+                            "y": data_moc["y"],
+                            "type": "lines", 
+                        },
+                    ],
+                    "layout": {"title": "Curvas com intercessão "},
+                },
+                    ),
+                ]
+        ),
 
- 
     ]
 )
 
@@ -90,4 +112,3 @@ app.layout = html.Div(
 if __name__ == "__main__":
     app.run_server(debug=True)
 
-# dash-table, dash-html-components, dash-core-components, tenacity, plotly, dash
