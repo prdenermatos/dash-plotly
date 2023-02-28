@@ -1,4 +1,16 @@
 from dash import Dash, html, dependencies, dcc
+import pandas as pd
+import plotly.express as px
+import plotly.graph_objs as go
+
+
+labels = ['Maçãs', 'Bananas', 'Laranjas']
+values = [23, 17, 35]
+fig = go.Figure(data=[go.Pie(labels=labels, values=values)])
+
+fig2 = go.Figure(data=[go.Pie(labels=labels, values=values)])
+
+
 
 
 
@@ -85,7 +97,7 @@ app.layout = html.Div(
             html.H1(children="Gráfico de Barras e Tendências"),  
                 html.P("Pode ser usado para avaliar grandezas relacionadas"),
                 dcc.Graph(
-                        id = "graph-bar-lines" ,
+                        id = "graph-pie",
                         figure={
                     "data": [
                         {
@@ -102,6 +114,22 @@ app.layout = html.Div(
                     "layout": {"title": "Curvas com intercessão "},
                 },
                     ),
+                ]
+        ),
+         html.Div(
+            children=[
+            html.H1(children="Gráfico de Barras e Tendências"),  
+                html.P("Pode ser usado para avaliar grandezas relacionadas"),
+                dcc.Graph(
+                        id = "graph-bar-lines" ,
+                        figure=fig,
+
+                       
+                    ),
+                dcc.Graph(
+                        id = "graph-bar-lines2" ,
+                        figure=fig2, 
+                )
                 ]
         ),
 
