@@ -12,22 +12,77 @@ app = Dash(__name__)
 
 app.layout = html.Div(
     children=[
-    html.H1(children="Teste"),  
-    html.P("Esta é uma descrição resumida do gráfico"),
-   dcc.Graph(
-            figure={
-                "data": [
-                    {
-                        "x": data_moc["x"],  # PAR ORDENADOS
-                        "y": data_moc["y"],
-                        "type": "lines",  #  TIPO DO GRÁFICO
+    
+    html.Div(
+    children= [
+       html.H1(children="Monitor de perspectiva no tempo"),  
+        html.P("Esta é uma descrição resumida do gráfico"),
+        dcc.Graph(
+                figure={
+                    "data": [
+                        {
+                            "x": data_moc["x"],  # PAR ORDENADOS
+                            "y": data_moc["y"],
+                            "type": "lines",  #  TIPO DO GRÁFICO
+                        },
+                    ],
+                    "layout": {"title": "Curva de Tendência"},
+                },
+            ),
+        ]
+    ),
+
+    html.Div(
+    children=[
+        html.H1(children="Análise de Composição"),  
+            html.P("Esta é uma descrição resumida do gráfico"),
+            dcc.Graph(
+                    figure={
+                        "data": [
+                            {
+                                "y": data_moc["x"], 'type': 'box'  # o Type define o grafico  e cada um recebe uma forma de parâmetro
+                            
+                            },
+                            {
+                                "y": data_moc["y"], 'type': 'box'  # o Type define o grafico  e cada um recebe uma forma de parâmetro
+                            
+                            },
+                        ],
+                        "layout": {"title": "Boxplot"},
                     },
-                ],
-                "layout": {"title": "Curva de Tendência"},
-            },
+                ),
+    
+    
+            ]
         ),
 
+        html.Div(
+        children=[
+            html.H1(children="Análise de Composição"),  
+                html.P("Pode ser usado para avaliar grandezas relacionadas"),
+                dcc.Graph(
+                        figure={
+                    "data": [
+                        {
+                            "x": data_moc["x"],  
+                            "y": data_moc["y"],
+                            "type": "lines", 
+                        },
+                         {
+                            "x": data_moc["y"],  
+                            "y": data_moc["x"],
+                            "type": "lines", 
+                        },
+                    ],
+                    "layout": {"title": "Curvas com intercessão "},
+                },
+                    ),
+        
+        
+                ]
+        ),
 
+ 
     ]
 )
 
