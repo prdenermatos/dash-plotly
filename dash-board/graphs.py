@@ -118,19 +118,24 @@ app.layout = html.Div(
         ),
          html.Div(
             children=[
-            html.H1(children="Gráfico de Barras e Tendências"),  
-                html.P("Pode ser usado para avaliar grandezas relacionadas"),
-                dcc.Graph(
+                html.Div(html.H1(children="Gráfico de Barras e Tendências")) ,  
+                html.Div(html.P("Pode ser usado para avaliar grandezas relacionadas")) ,
+                html.Div(
+                    dcc.Graph(
                         id = "graph-bar-lines" ,
                         figure=fig,
-
-                       
-                    ),
-                dcc.Graph(
+                    )
+                ),
+                html.Div(dcc.Graph(
                         id = "graph-bar-lines2" ,
                         figure=fig2, 
-                )
-                ]
+                ))
+                
+                ], 
+                style= {'display': 'inline-block', 'vertical-align': 'top', 'margin-left': '3vw', 'margin-top': '3vw', 'width': '100%'}
+      
+    
+                
         ),
 
     ]
